@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Playwright Combined Practice — QA Playground</title>
+  <meta name="description" content="Interactive QA practice playground for Playwright / Selenium / Cypress training — inputs, modals, drag/drop, shadow DOM, iFrame, auto-suggest and more." />
+  <link rel="stylesheet" href="style.css">
+  <!-- Preload critical CSS if desired (optional) -->
+</head>
+<body>
+
+  <!-- Skip link for screen reader / keyboard users -->
+  <a class="skip-link" href="#mainContent">Skip to main content</a>
+
+  <!-- Menu toggle (visible on small screens) -->
+  <button id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="sideMenu">Menu</button>
+
+  <!-- ===== Side Menu ===== -->
+  <nav id="sideMenu" class="side-menu" aria-label="Practice sections">
+    <h3>Sections</h3>
+    <ul>
+      <li><a href="#1-text-input">1. Text Input</a></li>
+      <li><a href="#2-password-input">2. Password Input</a></li>
+      <li><a href="#3-email-input">3. Email Input</a></li>
+      <li><a href="#4-number-input">4. Number Input</a></li>
+      <li><a href="#5-radio">5. Radio Buttons</a></li>
+      <li><a href="#6-checkbox">6. Checkboxes</a></li>
+      <li><a href="#7-dropdown">7. Dropdown</a></li>
+      <li><a href="#8-multiselect">8. Multi-Select</a></li>
+      <li><a href="#9-file-upload">9. File Upload</a></li>
+      <li><a href="#10-datetime">10. Date/Time Inputs</a></li>
+      <li><a href="#11-color-range">11. Color & Range</a></li>
+      <li><a href="#12-buttons">12. Buttons</a></li>
+      <li><a href="#13-links">13. Links</a></li>
+      <li><a href="#14-media">14. Media Elements</a></li>
+      <li><a href="#15-tables-lists">15. Tables & Lists</a></li>
+      <li><a href="#16-modal">16. Modal</a></li>
+      <li><a href="#17-shadow">17. Shadow DOM</a></li>
+      <li><a href="#18-tooltip">18. Tooltips</a></li>
+      <li><a href="#19-auth">19. Authentication</a></li>
+      <li><a href="#20-auto-suggest">20. Auto-suggest</a></li>
+      <li><a href="#21-dependent-dropdown">21. Dependent Dropdown</a></li>
+      <li><a href="#22-masked-input">22. Masked Input</a></li>
+      <li><a href="#23-double-click">23. Double Click</a></li>
+      <li><a href="#24-drag-drop">24. Drag & Drop</a></li>
+      <li><a href="#25-sortable-table">25. Sortable Table</a></li>
+      <li><a href="#26-modal-toast-alert">26. Modal / Toast / Alert</a></li>
+      <li><a href="#27-iframe">27. iFrame Interaction</a></li>
+      <li><a href="#28-shadow-advanced">28. Shadow DOM Advanced</a></li>
+      <li><a href="#29-multi-tab">29. Multi-tab Navigation</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== Main Container ===== -->
+  <main id="mainContent" class="main-container" tabindex="-1" role="main">
+
+    <!-- 1. Text Input -->
+    <section id="1-text-input">
+      <h2>1. Text Input</h2>
+      <div class="theory">Basic text input to type any value.</div>
+      <label for="textInputField">Enter text</label>
+      <input type="text" id="textInputField" placeholder="Type something" aria-describedby="textInputMsg">
+      <div class="message" id="textInputMsg" aria-live="polite">—</div>
+    </section>
+
+    <!-- 2. Password Input -->
+    <section id="2-password-input">
+      <h2>2. Password Input</h2>
+      <div class="theory">Password field — characters hidden.</div>
+      <label for="passwordField">Password</label>
+      <input type="password" id="passwordField" placeholder="Enter password" aria-describedby="passwordMsg">
+      <div class="message" id="passwordMsg" aria-live="polite">—</div>
+    </section>
+
+    <!-- 3. Email Input -->
+    <section id="3-email-input">
+      <h2>3. Email Input</h2>
+      <div class="theory">Input field to enter email addresses.</div>
+      <label for="emailField">Email</label>
+      <input type="email" id="emailField" placeholder="name@example.com" aria-describedby="emailMsg">
+      <div class="message" id="emailMsg" aria-live="polite">—</div>
+    </section>
+
+    <!-- 4. Number Input -->
+    <section id="4-number-input">
+      <h2>4. Number Input</h2>
+      <div class="theory">Input field to enter numeric values only.</div>
+      <label for="numberField">Number</label>
+      <input type="number" id="numberField" placeholder="Enter number" aria-describedby="numberMsg" inputmode="numeric">
+      <div class="message" id="numberMsg" aria-live="polite">—</div>
+    </section>
+
+    <!-- 5. Radio Buttons -->
+    <section id="5-radio">
+      <h2>5. Radio Buttons</h2>
+      <div class="theory">Choose one option from multiple choices.</div>
+      <fieldset>
+        <legend>Gender</legend>
+        <label><input type="radio" name="gender" id="maleRadio" value="Male"> Male</label>
+        <label><input type="radio" name="gender" id="femaleRadio" value="Female"> Female</label>
+      </fieldset>
+      <div class="message" id="radioMsg" aria-live="polite">—</div>
+    </section>
+
+    <!-- 6. Checkboxes -->
+    <section id="6-checkbox">
+      <h2>6. Checkboxes</h2>
+      <div class="theory">Select multiple options if needed.</div>
+      <label><input type="checkbox" id="subscribeChk" value="Subscribe"> Subscribe</label>
+      <label><input type="checkbox" id="agreeChk" value="Agree"> Agree</label>
+      <div class="message" id="checkboxMsg" aria-live="polite">—</div>
+    </section>
+
+    <!-- 7. Dropdown -->
+    <section id="7-dropdown">
+      <h2>7. Dropdown</h2>
+      <div class="theory">Select one option from the dropdown list.</div>
+      <label for="dropdownField">Choose a car</label>
+      <select id="dropdownField" aria-describedby="dropdownMsg">
+        <option value="">Select a car</option>
+        <option value="BMW">BMW</option>
+        <option value="Audi">Audi</option>
+        <option value="Tesla">Tesla</option>
+      </select>
+      <div class="message" id="dropdownMsg" aria-live="polite">—</div>
+    </section>
+
+    <!-- 8. Multi-Select -->
+    <section id="8-multiselect">
+      <h2>8. Multi-Select</h2>
+      <div class="theory">Select multiple options by holding Ctrl/Cmd.</div>
+      <label for="multiSelectField">Fruits</label>
+      <select id="multiSelectField" multiple aria-describedby="multiSelectMsg">
+        <option value="Apple">Apple</option>
+        <option value="Banana">Banana</option>
+        <option value="Mango">Mango</option>
+      </select>
+      <div class="message" id="multiSelectMsg" aria-live="polite">—</div>
+    </section>
+
+    <!-- 9. File Upload -->
+    <section id="9-file-upload">
+      <h2>9. File Upload</h2>
+      <div class="theory">Upload file for testing. (Single file)</div>
+      <label for="fileUploadField">Choose file</label>
+      <input type="file" id="fileUploadField" aria-describedby="fileUploadMsg">
+      <div class="message" id="fileUploadMsg" aria-live="polite">—</div>
+    </section>
+
+    <!-- 10. Date/Time Inputs -->
+    <section id="10-datetime">
+      <h2>10. Date/Time Inputs</h2>
+      <div class="theory">Date/time controls for automation.</div>
+      <label for="dateField">Date</label>
+      <input type="date" id="dateField">
+      <label for="timeField">Time</label>
+      <input type="time" id="timeField">
+      <label for="datetimeField">Date & Time</label>
+      <input type="datetime-local" id="datetimeField">
+      <label for="monthField">Month</label>
+      <input type="month" id="monthField">
+      <label for="weekField">Week</label>
+      <input type="week" id="weekField">
+      <div class="message" id="dateTimeMsg" aria-live="polite">—</div>
+    </section>
+
+    <!-- 11. Color & Range -->
+    <section id="11-color-range">
+      <h2>11. Color & Range</h2>
+      <div class="theory">Choose color and numeric range values.</div>
+      <label for="colorField">Color</label>
+      <input type="color" id="colorField" aria-describedby="colorRangeMsg">
+      <label for="rangeField">Range</label>
+      <input type="range" id="rangeField" min="0" max="100" aria-valuemin="0" aria-valuemax="100">
+      <div class="message" id="colorRangeMsg" aria-live="polite">—</div>
+    </section>
+
+    <!-- 12. Buttons -->
+    <section id="12-buttons">
+      <h2>12. Buttons</h2>
+      <div class="theory">Various buttons with different actions.</div>
+      <button id="clickBtn" type="button">Click Me</button>
+      <button id="alertBtn" type="button">Show Alert</button>
+      <button id="toggleBtn" type="button" aria-controls="toggleDiv" aria-pressed="false">Toggle Div</button>
+      <div id="toggleDiv" class="toggle-visible">This div can be toggled.</div>
+      <div class="message" id="buttonMsg" aria-live="polite">—</div>
+    </section>
+
+    <!-- 13. Links -->
+    <section id="13-links">
+      <h2>13. Links</h2>
+      <div class="theory">Internal and external link examples.</div>
+      <a href="#1-text-input" id="internalLink">Go to Text Input</a>
+      <a href="https://example.com" target="_blank" rel="noopener noreferrer" id="externalLink">External Link</a>
+      <div class="message" id="linkMsg" aria-live="polite">—</div>
+    </section>
+
+    <!-- 14. Media Elements -->
+    <section id="14-media">
+      <h2>14. Media Elements</h2>
+      <div class="theory">Images, videos, audio, canvas examples.</div>
+      <img src="https://via.placeholder.com/300x150?text=Image" id="imgSample" alt="Sample Image">
+      <video id="videoSample" controls preload="metadata">
+        <source src="sample.mp4" type="video/mp4">
+        Your browser does not support the video element.
+      </video>
+      <audio id="audioSample" controls>
+        <source src="sample.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <canvas id="canvasSample" width="300" height="100" style="border:1px solid #000;"></canvas>
+      <div class="message" id="mediaMsg" aria-live="polite">—</div>
+    </section>
+
+    <!-- 15. Tables & Lists -->
+    <section id="15-tables-lists">
+      <h2>15. Tables & Lists</h2>
+      <div class="theory">Tables and lists for automation assertions.</div>
+      <table id="sampleTable" border="1">
+        <thead>
+          <tr><th>Name</th><th data-sort-type="number">Age</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>John</td><td>28</td></tr>
+          <tr><td>Jane</td><td>32</td></tr>
+        </tbody>
+      </table>
+      <ul id="sampleList" aria-label="Sample items">
+        <li>Item 1</li>
+        <li>Item 2</li>
+      </ul>
+      <div class="message" id="tableListMsg" aria-live="polite">Tables & Lists ready for automation assertions</div>
+    </section>
+
+    <!-- 16. Modal -->
+    <section id="16-modal">
+      <h2>16. Modal</h2>
+      <div class="theory">Open and close modal dialogs.</div>
+      <button id="openModalBtn" type="button" aria-haspopup="dialog" aria-controls="sampleModal">Open Modal</button>
+      <div class="modal" id="sampleModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+        <div class="modal-content">
+          <button class="closeModal" aria-label="Close modal">&times;</button>
+          <h3 id="modalTitle">Modal content</h3>
+          <p>Modal content here</p>
+        </div>
+      </div>
+      <div class="message" id="modalMsg" aria-live="polite">—</div>
+    </section>
+
+    <!-- 17. Shadow DOM -->
+    <section id="17-shadow">
+      <h2>17. Shadow DOM</h2>
+      <div class="theory">Interact with Shadow DOM elements.</div>
+      <div id="shadowHost" aria-hidden="false"></div>
+      <div class="message" id="shadowMsg" aria-live="polite">—</div>
+    </section>
+
+    <!-- 18. Tooltips -->
+    <section id="18-tooltip">
+      <h2>18. Tooltips</h2>
+      <div class="theory">Hover to see tooltip messages.</div>
+      <button id="tooltipBtn" aria-describedby="tooltipText">Hover me</button>
+      <span id="tooltipText" role="status" aria-hidden="true" class="tooltip-text">Tooltip Text</span>
+      <div class="message" id="tooltipMsg" aria-live="polite">—</div>
+    </section>
+
+    <!-- 19. Authentication -->
+    <section id="19-auth">
+      <h2>19. Authentication</h2>
+      <div class="theory">Simulated login for testing.</div>
+      <button id="loginBtn" type="button">Login</button>
+      <div class="message" id="authMsg" aria-live="polite">—</div>
+    </section>
+
+    <!-- 20. Auto-suggest / Autocomplete -->
+    <section id="20-auto-suggest">
+      <h2>20. Auto-suggest / Autocomplete</h2>
+      <div class="theory">Start typing and select from suggestions.</div>
+      <label for="autoSuggestInput">Type fruit</label>
+      <input type="text" id="autoSuggestInput" placeholder="Type fruit" aria-autocomplete="list" aria-controls="suggestionsList" aria-describedby="autoSuggestMsg">
+      <ul id="suggestionsList" role="listbox" aria-label="Suggestions"></ul>
+      <div class="message" id="autoSuggestMsg" aria-live="polite">—</div>
+    </section>
+
+    <!-- 21. Dependent Dropdown -->
+    <section id="21-dependent-dropdown">
+      <h2>21. Dependent Dropdown</h2>
+      <div class="theory">Select a country, then select a city.</div>
+      <label for="countrySelect">Country</label>
+      <select id="countrySelect">
+        <option value="">Select Country</option>
+        <option value="India">India</option>
+        <option value="USA">USA</option>
+        <option value="UK">UK</option>
+      </select>
+      <label for="citySelect">City</label>
+      <select id="citySelect" aria-describedby="dependentMsg"></select>
+      <div class="message" id="dependentMsg" aria-live="polite">—</div>
+    </section>
+
+    <!-- 22. Masked Input -->
+    <section id="22-masked-input">
+      <h2>22. Masked Input</h2>
+      <div class="theory">Input is masked dynamically (example mask).</div>
+      <label for="maskedInput">Masked</label>
+      <input type="text" id="maskedInput" placeholder="Enter masked value" aria-describedby="maskedMsg" inputmode="text">
+      <div class="message" id="maskedMsg" aria-live="polite">—</div>
+    </section>
+
+    <!-- 23. Double Click -->
+    <section id="23-double-click">
+      <h2>23. Double Click</h2>
+      <div class="theory">Double click on the button.</div>
+      <button id="doubleClickBtn" type="button">Double Click Me</button>
+      <div class="message" id="doubleClickMsg" aria-live="polite">—</div>
+    </section>
+
+    <!-- 24. Drag & Drop -->
+    <section id="24-drag-drop">
+      <h2>24. Drag & Drop</h2>
+      <div class="theory">Drag the item and drop into the target.</div>
+      <div id="dragItem" draggable="true" role="button" tabindex="0" aria-grabbed="false">Drag Me</div>
+      <div id="dropZone" role="region" aria-label="Drop zone">Drop Here</div>
+      <div class="message" id="dragMsg" aria-live="polite">—</div>
+    </section>
+
+    <!-- 25. Sortable Table -->
+    <section id="25-sortable-table">
+      <h2>25. Sortable Table</h2>
+      <div class="theory">Click column headers to sort table.</div>
+      <table id="sortableTable" border="1">
+        <thead>
+          <tr><th data-sort-type="text">Name</th><th data-sort-type="number">Age</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>John</td><td>28</td></tr>
+          <tr><td>Jane</td><td>32</td></tr>
+          <tr><td>Mark</td><td>25</td></tr>
+        </tbody>
+      </table>
+      <div class="message" id="sortableMsg" aria-live="polite">—</div>
+    </section>
+
+    <!-- 26. Modal / Toast / Alert -->
+    <section id="26-modal-toast-alert">
+      <h2>26. Modal / Toast / Alert</h2>
+      <div class="theory">Advanced modal example.</div>
+      <button id="advModalBtn" type="button" aria-haspopup="dialog" aria-controls="advModal">Open Advanced Modal</button>
+      <div class="modal" id="advModal" role="dialog" aria-modal="true" tabindex="-1">
+        <div class="modal-content">
+          <button id="advCloseModal" aria-label="Close advanced modal">&times;</button>
+          <p>Advanced Modal Content</p>
+        </div>
+      </div>
+      <div class="message" id="advModalMsg" aria-live="polite">—</div>
+    </section>
+
+    <!-- 27. iFrame Interaction -->
+    <section id="27-iframe">
+      <h2>27. iFrame Interaction</h2>
+      <div class="theory">Interact with iFrame content safely.</div>
+      <iframe id="sampleIframe" srcdoc="<p>Iframe content</p>" width="300" height="100" title="Sample iframe"></iframe>
+      <button id="iframeBtn" type="button">Change iFrame Background</button>
+      <div class="message" id="iframeMsg" aria-live="polite">—</div>
+    </section>
+
+    <!-- 28. Shadow DOM Advanced -->
+    <section id="28-shadow-advanced">
+      <h2>28. Shadow DOM Advanced</h2>
+      <div class="theory">Advanced Shadow DOM element interaction.</div>
+      <div id="shadowAdvHost"></div>
+      <div class="message" id="shadowAdvMsg" aria-live="polite">—</div>
+    </section>
+
+    <!-- 29. Multi-tab Navigation -->
+    <section id="29-multi-tab">
+      <h2>29. Multi-tab Navigation</h2>
+      <div class="theory">Open a new browser tab.</div>
+      <button id="newTabBtn" type="button">Open New Tab</button>
+      <div class="message" id="multiTabMsg" aria-live="polite">—</div>
+    </section>
+
+  </main>
+
+  <!-- Noscript fallback -->
+  <noscript>
+    <div class="noscript-warning">JavaScript is required for full interactivity. Please enable JavaScript.</div>
+  </noscript>
+
+  <!-- Defer JS for better load -->
+  <script src="script.js" defer></script>
+</body>
+</html>

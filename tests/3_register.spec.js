@@ -1,5 +1,10 @@
 import { test, expect } from "@playwright/test";
 
+// test.use({
+//   viewport: { width: 160, height: 1200 },
+// });
+
+
 test.only("Verify the register valid scenario", async ({ page }) => {
   // open the page
   await page.goto("https://thinking-tester-contact-list.herokuapp.com/login");
@@ -17,10 +22,14 @@ test.only("Verify the register valid scenario", async ({ page }) => {
     "https://thinking-tester-contact-list.herokuapp.com/addUser"
   );
 
+  await page.screenshot({ path: 'reports/screenshots/addUser.png', fullPage: true });
+
   await page.waitForTimeout(2000);
   // Verify if the header text is visible
 
   const headerText = await page.getByText("Add User");
+
+  await headerText.screenshot({ path: 'reports/screenshots/headerText.png' });
   await expect(headerText).toContainText("Add User");
 
   await page.waitForTimeout(2000);

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Playwright Advanced Practice</title>
+  <link rel="stylesheet" href="style.css"> <!-- Common styling -->
+  <link rel="stylesheet" href="style2.css"> <!-- Advanced-specific styling -->
+</head>
+<body>
+
+  <!-- ===== Menu Toggle ===== -->
+  <button class="menu-toggle" id="menuToggle">☰ Menu</button>
+
+  <!-- ===== Side Menu ===== -->
+  <aside class="side-menu" id="sideMenu">
+    <h3>Advanced Elements Menu</h3>
+    <ul>
+      <li><a href="#autoSuggest">1️⃣ Auto-suggest / Autocomplete</a></li>
+      <li><a href="#dependentDropdown">2️⃣ Dependent Dropdown</a></li>
+      <li><a href="#maskedInput">3️⃣ Masked Input</a></li>
+      <li><a href="#doubleClick">4️⃣ Double Click</a></li>
+      <li><a href="#dragDrop">5️⃣ Drag & Drop</a></li>
+      <li><a href="#sortableTable">6️⃣ Sortable Table</a></li>
+      <li><a href="#modalPopup">7️⃣ Modal / Toast / Alert</a></li>
+      <li><a href="#iFrame">8️⃣ iFrame Interaction</a></li>
+      <li><a href="#shadowDom">9️⃣ Shadow DOM</a></li>
+      <li><a href="#multiTab">🔟 Multi-tab Navigation</a></li>
+    </ul>
+  </aside>
+
+  <!-- ===== Main Container ===== -->
+  <main class="main-container">
+
+    <section id="autoSuggest">
+      <h2>1️⃣ Auto-suggest / Autocomplete</h2>
+      <div class="message" id="autoSuggestMsg">Message will appear here</div>
+      <p class="theory">
+        <strong>Theory:</strong> Auto-suggest provides options while typing. 
+        Playwright actions: <code>fill()</code>, <code>click()</code>, <code>press()</code>.
+      </p>
+      <input type="text" id="autoInput" placeholder="Start typing...">
+      <ul id="suggestionsList"></ul>
+    </section>
+
+    <section id="dependentDropdown">
+      <h2>2️⃣ Dependent Dropdown</h2>
+      <div class="message" id="dependentDropdownMsg">Message will appear here</div>
+      <p class="theory">
+        <strong>Theory:</strong> Selecting one dropdown affects options in another. 
+        Playwright actions: <code>selectOption()</code>.
+      </p>
+      <select id="countrySelect">
+        <option value="">Select Country</option>
+        <option value="India">India</option>
+        <option value="USA">USA</option>
+      </select>
+      <select id="stateSelect">
+        <option value="">Select State</option>
+      </select>
+    </section>
+
+    <section id="maskedInput">
+      <h2>3️⃣ Masked Input</h2>
+      <div class="message" id="maskedInputMsg">Message will appear here</div>
+      <p class="theory">
+        <strong>Theory:</strong> Masked input controls format (e.g., phone). 
+        Playwright actions: <code>fill()</code>, <code>type()</code>.
+      </p>
+      <input type="text" id="phoneInput" placeholder="123-456-7890">
+    </section>
+
+    <section id="doubleClick">
+      <h2>4️⃣ Double Click</h2>
+      <div class="message" id="doubleClickMsg">Message will appear here</div>
+      <p class="theory">
+        <strong>Theory:</strong> Double click triggers events. 
+        Playwright actions: <code>dblclick()</code>.
+      </p>
+      <button id="dblClickBtn">Double Click Me</button>
+    </section>
+
+    <section id="dragDrop">
+      <h2>5️⃣ Drag & Drop</h2>
+      <div class="message" id="dragDropMsg">Message will appear here</div>
+      <p class="theory">
+        <strong>Theory:</strong> Drag an item and drop into target. 
+        Playwright actions: <code>dragTo()</code>.
+      </p>
+      <div id="dragItem" draggable="true">Drag Me</div>
+      <div id="dropTarget">Drop Here</div>
+    </section>
+
+    <section id="sortableTable">
+      <h2>6️⃣ Sortable Table</h2>
+      <div class="message" id="sortableTableMsg">Message will appear here</div>
+      <p class="theory">
+        <strong>Theory:</strong> Sort table columns. 
+        Playwright actions: <code>click()</code>, <code>locator()</code>.
+      </p>
+      <table id="sortTable">
+        <thead>
+          <tr><th>Name</th><th>Age</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>John</td><td>28</td></tr>
+          <tr><td>Jane</td><td>22</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="modalPopup">
+      <h2>7️⃣ Modal / Toast / Alert</h2>
+      <div class="message" id="modalPopupMsg">Message will appear here</div>
+      <p class="theory">
+        <strong>Theory:</strong> Handle modal popups, alerts, and toasts. 
+        Playwright actions: <code>click()</code>, <code>dialog()</code>.
+      </p>
+      <button id="modalBtn">Open Modal</button>
+      <button id="toastBtn">Show Toast</button>
+      <div id="sampleModal" class="modal">
+        <div class="modal-content">
+          <span class="closeModal">&times;</span>
+          <p>This is a sample modal!</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="iFrame">
+      <h2>8️⃣ iFrame Interaction</h2>
+      <div class="message" id="iFrameMsg">Message will appear here</div>
+      <p class="theory">
+        <strong>Theory:</strong> Access content inside iframe. 
+        Playwright actions: <code>frameLocator()</code>, <code>fill()</code>.
+      </p>
+      <iframe id="sampleIframe" srcdoc='<input type="text" id="iframeInput" placeholder="Type in iframe">' ></iframe>
+    </section>
+
+    <section id="shadowDom">
+      <h2>9️⃣ Shadow DOM</h2>
+      <div class="message" id="shadowDomMsg">Message will appear here</div>
+      <p class="theory">
+        <strong>Theory:</strong> Shadow DOM elements are encapsulated. 
+        Playwright actions: <code>locator("shadow=css")</code>.
+      </p>
+      <div id="shadowHost"></div>
+    </section>
+
+    <section id="multiTab">
+      <h2>🔟 Multi-tab Navigation</h2>
+      <div class="message" id="multiTabMsg">Message will appear here</div>
+      <p class="theory">
+        <strong>Theory:</strong> Handle multiple tabs. 
+        Playwright actions: <code>newContext()</code>, <code>newPage()</code>.
+      </p>
+      <button id="openTabBtn">Open New Tab</button>
+    </section>
+
+  </main>
+
+  <script src="script2.js"></script>
+</body>
+</html>

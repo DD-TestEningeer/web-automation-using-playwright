@@ -1,0 +1,248 @@
+/* ===== General Styles ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  display: flex;
+  background-color: #f0f2f5;
+  color: #333;
+}
+
+/* ===== Main Container ===== */
+.main-container {
+  flex: 1;
+  padding: 2rem;
+  max-width: 900px;
+  margin-left: 220px;
+}
+
+/* ===== Side Menu ===== */
+.side-menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 220px;
+  height: 100%;
+  background-color: #343a40;
+  color: white;
+  padding: 1rem;
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+  transform: translateX(0);
+  z-index: 1000;
+}
+
+.side-menu h3 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.side-menu ul {
+  list-style: none;
+}
+
+.side-menu ul li {
+  margin: 0.5rem 0;
+}
+
+.side-menu ul li a {
+  color: #f8f9fa;
+  text-decoration: none;
+}
+
+.side-menu.open {
+  transform: translateX(0);
+}
+
+/* ===== Menu Toggle ===== */
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1100;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  .side-menu {
+    transform: translateX(-100%);
+  }
+  .main-container {
+    margin-left: 0;
+  }
+}
+
+/* ===== Section Styles ===== */
+section {
+  background-color: #fff;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+section h2 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  border-left: 4px solid #007bff;
+  padding-left: 0.5rem;
+}
+
+.theory {
+  background-color: #e9f3ff;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid #007bff;
+  border-radius: 4px;
+}
+
+.message {
+  background-color: #fff8c4;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid #ffc107;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* ===== Inputs & Buttons ===== */
+input,
+select,
+textarea,
+button {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  border: none;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+/* ===== Modal Styles ===== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1500;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 1rem;
+  border-radius: 6px;
+  width: 80%;
+  max-width: 400px;
+  position: relative;
+}
+
+.closeModal {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ===== Media Elements ===== */
+img, video, audio, canvas {
+  max-width: 100%;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+}
+
+/* ===== Toggle Div ===== */
+#toggleDiv {
+  background-color: #d1ffd1;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 4px;
+}
+
+/* ===== Shadow DOM Example ===== */
+#shadowHost,
+#shadowAdvHost {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+}
+
+/* ===== Suggestion List ===== */
+#suggestionsList {
+  list-style: none;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  max-width: 300px;
+  display: none;
+}
+
+#suggestionsList li {
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+}
+
+#suggestionsList li:hover {
+  background-color: #e9f3ff;
+}
+
+/* ===== Drag & Drop ===== */
+#dragItem {
+  cursor: grab;
+  text-align: center;
+  line-height: 50px;
+}
+
+#dropZone {
+  text-align: center;
+  line-height: 80px;
+}
+
+/* ===== Table Styles ===== */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table th, table td {
+  padding: 0.5rem;
+  text-align: left;
+}
