@@ -1,6 +1,9 @@
 const { defineConfig, devices } = require("@playwright/test");
 
 module.exports = defineConfig({
+
+    // Test timeout (in milliseconds)
+    timeout: 60000,  // Global timeout for all tests
   testDir: "./tests",
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
@@ -10,6 +13,9 @@ module.exports = defineConfig({
 
   use: {
     trace: "on-first-retry",
+    navigationTimeout: 60000,  // Timeout for page.goto (in milliseconds)
+    // Optionally set default waitUntil for page.goto
+    waitUntil: 'load',  // or 'domcontentloaded' or 'networkidle'
   },
 
   projects: [

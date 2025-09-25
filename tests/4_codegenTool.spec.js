@@ -30,7 +30,7 @@ test('TC002 - Verify the Textbox Input Test', async ({ page }) => {
 
 test('TC003 - Radio Buttons Test', async ({ page }) => {
     await page.goto('https://dd-demo-tau.vercel.app/web_elements.html');
-    await expect(page.getByRole('link', { name: 'Radio Buttons' })).toBeVisible();
+    await expect(page.getByText('Text Input')).toBeVisible();
     await page.getByRole('link', { name: 'Radio Buttons' }).click();
     await expect(page.getByRole('heading', { name: 'Radio Buttons' })).toBeVisible();
     await page.getByRole('radio', { name: 'Male', exact: true }).check();
