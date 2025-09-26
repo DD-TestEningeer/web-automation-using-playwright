@@ -1,4 +1,26 @@
-const { defineConfig, devices } = require("@playwright/test");
+import { defineConfig } from '@playwright/test';
+
+export default defineConfig({
+
+  timeout: 60000,  // Global timeout for all tests,
+
+  reporter: [['html', { open: 'always' }]],
+
+  // reporter: [
+  //   ['list'],
+  //   ['allure-playwright']
+  // ],
+  use: {
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
+    trace: 'retain-on-failure',
+  },
+});
+
+
+
+
+/* const { defineConfig, devices } = require("@playwright/test");
 
 module.exports = defineConfig({
 
@@ -10,9 +32,10 @@ module.exports = defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: "html",
+  reporter: "allure-playwright",
 
   use: {
-    trace: "on-first-retry",
+    trace: "on",
     navigationTimeout: 60000,  // Timeout for page.goto (in milliseconds)
     // Optionally set default waitUntil for page.goto
     waitUntil: 'load',  // or 'domcontentloaded' or 'networkidle'
@@ -33,6 +56,8 @@ module.exports = defineConfig({
     },
   ],
 });
+
+*/
 
 // import { defineConfig, devices } from '@playwright/test';
 
